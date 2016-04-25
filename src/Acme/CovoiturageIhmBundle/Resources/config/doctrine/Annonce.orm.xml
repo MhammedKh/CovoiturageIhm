@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Acme\CovoiturageIhmBundle\Entity\Annonce" table="annonce">
+    <indexes>
+      <index name="FK_utilisateur" columns="id_utilisateur"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="marqueVoiture" type="string" column="marque_voiture" length="45" nullable="true"/>
+    <field name="nombrePlace" type="integer" column="nombre_place" nullable="true"/>
+    <field name="prixPlace" type="float" column="prix_place" precision="10" scale="0" nullable="true"/>
+    <field name="dateDep" type="date" column="date_dep" nullable="true"/>
+    <field name="heureDep" type="string" column="heure_dep" length="45" nullable="true"/>
+    <field name="villeDep" type="string" column="ville_dep" length="45" nullable="true"/>
+    <field name="villeArr" type="string" column="ville_arr" length="45" nullable="true"/>
+    <field name="lieuDep" type="string" column="lieu_dep" length="45" nullable="true"/>
+    <field name="commentaire" type="string" column="commentaire" length="45" nullable="true"/>
+    <field name="status" type="string" column="status" length="45" nullable="true"/>
+    <field name="dateIns" type="date" column="date_ins" nullable="true"/>
+    <field name="fumeur" type="integer" column="fumeur" nullable="true"/>
+    <field name="musique" type="integer" column="musique" nullable="true"/>
+    <field name="discussion" type="integer" column="discussion" nullable="true"/>
+    <many-to-one field="idUtilisateur" target-entity="Utilisateur">
+      <join-columns>
+        <join-column name="id_utilisateur" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

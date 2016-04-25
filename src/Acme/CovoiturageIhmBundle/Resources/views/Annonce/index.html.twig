@@ -1,0 +1,67 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Annonce list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Marquevoiture</th>
+                <th>Nombreplace</th>
+                <th>Prixplace</th>
+                <th>Datedep</th>
+                <th>Heuredep</th>
+                <th>Villedep</th>
+                <th>Villearr</th>
+                <th>Lieudep</th>
+                <th>Commentaire</th>
+                <th>Status</th>
+                <th>Dateins</th>
+                <th>Fumeur</th>
+                <th>Musique</th>
+                <th>Discussion</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('annonce_show', { 'id': entity.id }) }}">{{ entity.marqueVoiture }}</a></td>
+                <td>{{ entity.nombrePlace }}</td>
+                <td>{{ entity.prixPlace }}</td>
+                <td>{% if entity.dateDep %}{{ entity.dateDep|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.heureDep }}</td>
+                <td>{{ entity.villeDep }}</td>
+                <td>{{ entity.villeArr }}</td>
+                <td>{{ entity.lieuDep }}</td>
+                <td>{{ entity.commentaire }}</td>
+                <td>{{ entity.status }}</td>
+                <td>{% if entity.dateIns %}{{ entity.dateIns|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.fumeur }}</td>
+                <td>{{ entity.musique }}</td>
+                <td>{{ entity.discussion }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('annonce_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('annonce_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('annonce_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -1,0 +1,84 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Annonce</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Marquevoiture</th>
+                <td>{{ entity.marqueVoiture }}</td>
+            </tr>
+            <tr>
+                <th>Nombreplace</th>
+                <td>{{ entity.nombrePlace }}</td>
+            </tr>
+            <tr>
+                <th>Prixplace</th>
+                <td>{{ entity.prixPlace }}</td>
+            </tr>
+            <tr>
+                <th>Datedep</th>
+                <td>{{ entity.dateDep|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Heuredep</th>
+                <td>{{ entity.heureDep }}</td>
+            </tr>
+            <tr>
+                <th>Villedep</th>
+                <td>{{ entity.villeDep }}</td>
+            </tr>
+            <tr>
+                <th>Villearr</th>
+                <td>{{ entity.villeArr }}</td>
+            </tr>
+            <tr>
+                <th>Lieudep</th>
+                <td>{{ entity.lieuDep }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ entity.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status }}</td>
+            </tr>
+            <tr>
+                <th>Dateins</th>
+                <td>{{ entity.dateIns|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fumeur</th>
+                <td>{{ entity.fumeur }}</td>
+            </tr>
+            <tr>
+                <th>Musique</th>
+                <td>{{ entity.musique }}</td>
+            </tr>
+            <tr>
+                <th>Discussion</th>
+                <td>{{ entity.discussion }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('annonce') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('annonce_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

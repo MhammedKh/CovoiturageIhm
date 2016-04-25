@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Reservation</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nbrplace</th>
+                <td>{{ entity.nbrPlace }}</td>
+            </tr>
+            <tr>
+                <th>Commentaireres</th>
+                <td>{{ entity.commentaireRes }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ entity.code }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('reservation') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('reservation_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

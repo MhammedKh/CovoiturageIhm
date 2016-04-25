@@ -1,0 +1,5 @@
+acme_covoiturage_ihm:
+    resource: "@AcmeCovoiturageIhmBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

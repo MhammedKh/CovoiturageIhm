@@ -1,0 +1,66 @@
+<?php
+
+namespace Acme\CovoiturageIhmBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Reservation
+ *
+ * @ORM\Table(name="reservation", indexes={@ORM\Index(name="FK_reservation_1", columns={"id_annonce"}), @ORM\Index(name="FK_reservation_2", columns={"id_utilisateur"})})
+ * @ORM\Entity
+ */
+class Reservation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbr_place", type="integer", nullable=true)
+     */
+    private $nbrPlace;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="commentaire_res", type="string", length=45, nullable=true)
+     */
+    private $commentaireRes;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=45, nullable=true)
+     */
+    private $code;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Acme\CovoiturageIhmBundle\Entity\Utilisateur
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\CovoiturageIhmBundle\Entity\Utilisateur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_utilisateur", referencedColumnName="id")
+     * })
+     */
+    private $idUtilisateur;
+
+    /**
+     * @var \Acme\CovoiturageIhmBundle\Entity\Annonce
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\CovoiturageIhmBundle\Entity\Annonce")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_annonce", referencedColumnName="id")
+     * })
+     */
+    private $idAnnonce;
+
+
+}
